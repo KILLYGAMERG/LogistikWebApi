@@ -1,11 +1,13 @@
-﻿namespace LogistikWebApi.Models;
+﻿using LogistikWebApi.Interfaces;
+
+namespace LogistikWebApi.Models;
 
 public class Group
 {
-    public string Name { get; set; } = string.Empty;
 
-    public int Id { get; set; }
-    public int Price { get; set; }
-    
+    public Guid Id { get; set; } = Guid.NewGuid();
+
+    public int ValueAddedTaxes { get; set; }
+    public string Name { get; set; } = string.Empty;
 }
 

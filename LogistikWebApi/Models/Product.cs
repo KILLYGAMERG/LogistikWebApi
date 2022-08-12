@@ -2,13 +2,13 @@
 
 public class Product
 {
-    public Location Location { get; set; } = new Location();
-    public Group Group { get; set; } = new Group();
-    public Shelf Shelf { get; set; } = new Shelf();
     
     public DateTime InWarehouseSince { get; set; }
 
-    public int Id { get; set; }
-    public int Stückzahl { get; set; }
+    public Guid Id { get; set; }
+
+    public Guid FK_groupId { get; set; } 
+
+    public string Name { get; set; } = string.Empty;
 }
 

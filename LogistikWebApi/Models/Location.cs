@@ -2,15 +2,17 @@
 
 public class Location
 {
-    public List<Shelf> Shelves { get; set; } = new List<Shelf>();
+    public int Id { get; set; }
 
     public string Street { get; set; } = string.Empty;
     public string State { get; set; } = string.Empty;
     public string Country { get; set; } = string.Empty;
-
-
-    public int Id { get; set; }
+ 
     public int StreetNumber { get; set; }
     public int Postcode { get; set; }
+
+    public int UnitsStored { get; set; }
+
+    public Guid FK_Product { get; set; }
 }
 
