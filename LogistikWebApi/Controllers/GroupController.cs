@@ -5,7 +5,7 @@ using LogistikWebApi.Dto;
 
 namespace LogistikWebApi.Controllers;
 
-[ApiController, Route ("[controller]")]
+[ApiController]
 
 public class GroupController : Controller
 {
@@ -16,36 +16,36 @@ public class GroupController : Controller
         _groupRepository = groupRepository;
     }
 
-    [HttpGet]
+    [HttpGet ("groups")]
     public async Task<ActionResult<List<GroupDto>>> HttpGetGroups()
     {
         return Ok(await _groupRepository.GetGroups());
     }
 
-    //[HttpGet]
-    //public async Task<ActionResult<List<GroupDto>>> HttpGetGroupByName(string name)
-    //{
-    //    var Group = _groupRepository.GetGroupByName(name);
-    //    if (Group == null) 
-    //    {
-    //        return BadRequest("Group Not found");
-    //    }
-    //    return Ok(await Group);
-    //}
+    [HttpGet("group")]
+    public async Task<ActionResult<List<GroupDto>>> HttpGetGroupByName(string name)
+    {
+        var Group = _groupRepository.GetGroupByName(name);
+        if (Group == null)
+        {
+            return BadRequest("Group Not found");
+        }
+        return Ok(await Group);
+    }
 
-    [HttpPost]
+    [HttpPost("group")]
     public async Task<ActionResult<List<GroupDto>>> HttpAddGroup(Group group) 
     {
         return Ok(await _groupRepository.AddGroup(group)); 
     }
 
-    [HttpPut]
+    [HttpPut("group")]
     public async Task<ActionResult<List<GroupDto>>> HttpUpdateGroup(Group request) 
     {
         return Ok(await _groupRepository.UpdateGroup(request));
     }
 
-    [HttpDelete]
+    [HttpDelete("group")]
     public async Task<ActionResult<List<GroupDto>>> HttpDeleteGroup(Guid Id) 
     {
         return await _groupRepository.DeleteGroup(Id);
